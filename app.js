@@ -16,4 +16,3 @@ db.once("open", () => {
   });
 });
 
-npm i mongoose@6.9.2
