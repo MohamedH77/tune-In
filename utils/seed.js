@@ -6,7 +6,7 @@ const Thought = require("../models/thought");
 async function seedData() {
   try {
     // Connect to MongoDB
-    await mongoose.connect("mongodb://localhost:27017/mydatabase", {
+    await mongoose.connect("mongodb://localhost:27017/tune-in", {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
