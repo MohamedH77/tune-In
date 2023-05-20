@@ -2,7 +2,7 @@ const { User } = require("../models");
 
 const getAllUsers = async () => {
   try {
-    const users = await User.find().populate({ path: "group" });
+    const users = await User.find().populate({ path: "thought" });
     return users;
   } catch (err) {
     throw new Error("Error getting all users");
@@ -11,7 +11,7 @@ const getAllUsers = async () => {
 
 const getUserById = async (id) => {
   try {
-    const user = await User.findById(id).populate({ path: "group" });
+    const user = await User.findById(id).populate({ path: "thought" });
     return user;
   } catch (err) {
     throw new Error("Error getting user by id");

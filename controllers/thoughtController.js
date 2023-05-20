@@ -2,37 +2,37 @@ const { Thought } = require("../models");
 
 const getAllThoughts = async () => {
   try {
-    const groups = await Thought.find();
-    return groups;
+    const thoughts = await Thought.find();
+    return thoughts;
   } catch (err) {
-    throw new Error("Error getting all groups");
+    throw new Error("Error getting all thoughts");
   }
 };
 
 const getThoughtById = async (id) => {
   try {
-    const group = await Thought.findById(id);
-    return group;
+    const thought = await Thought.findById(id);
+    return thought;
   } catch (err) {
-    throw new Error("Error getting group by id");
+    throw new Error("Error getting thought by id");
   }
 };
 
 const createThought = async (data) => {
   try {
-    const group = await Thought.create(data);
-    return group;
+    const thought = await Thought.create(data);
+    return thought;
   } catch (err) {
-    throw new Error("Error creating a new group");
+    throw new Error("Error creating a new thought");
   }
 };
 
 const updateThoughtById = async (id) => {
   try {
-    const group = await Thought.findByIdAndUpdate(id, data, { new: true });
-    return group;
+    const thought = await Thought.findByIdAndUpdate(id, data, { new: true });
+    return thought;
   } catch (err) {
-    throw new Error("Error updating group by id");
+    throw new Error("Error updating thoughts by id");
   }
 };
 
