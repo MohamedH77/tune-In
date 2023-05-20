@@ -14,7 +14,7 @@ const getThoughtById = async (id) => {
     const thought = await Thought.findById(id);
     return thought;
   } catch (err) {
-    throw new Error("Error getting thought by id");
+    throw new Error("Error getting thoughts by id");
   }
 };
 
@@ -23,7 +23,7 @@ const createThought = async (data) => {
     const thought = await Thought.create(data);
     return thought;
   } catch (err) {
-    throw new Error("Error creating a new thought");
+    throw new Error("Error creating a new thoughts");
   }
 };
 
