@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { getAllUsers, getUserById, createUser, updateUserById } = require("../controllers/userController");
+const { getAllUsers, getUserById, createUser, updateUserById } = require("../../controllers/userController");
 
 
 router.get("/user", async (req, res) => {

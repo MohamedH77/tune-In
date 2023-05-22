@@ -1,16 +1,17 @@
 const mongoose = require("mongoose");
 const { users, thoughts } = require("./data");
-const User = require("../models/user");
-const Thought = require("../models/thought");
+const { User, Thought } = require("../models");
+
+const db = require("../config/connection")
 
 async function seedData() {
   try {
-    // Connect to MongoDB
-    await mongoose.connect("mongodb://localhost:27017/tune-in", {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    console.log("Connected to MongoDB");
+    // // Connect to MongoDB
+    // await mongoose.connect("mongodb://localhost:27017/tune-in", {
+    //   useNewUrlParser: true,
+    //   useUnifiedTopology: true,
+    // });
+    // console.log("Connected to MongoDB");
 
     // Seed user data
     await User.deleteMany(); // Clear existing user data

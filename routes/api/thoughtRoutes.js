@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const { getAllThoughts, getThoughtById, createThought, updateThoughtById,} = require("../controllers/ThoughtController");
-const { updateUserById } = require("../controllers/userController");
+const { getAllThoughts, getThoughtById, createThought, updateThoughtById,} = require("../../controllers/ThoughtController");
+const { updateUserById } = require("../../controllers/userController");
 
 // ======== User Routes ========================
 
