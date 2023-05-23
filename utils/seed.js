@@ -6,13 +6,6 @@ const db = require("../config/connection")
 
 async function seedData() {
   try {
-    // // Connect to MongoDB
-    // await mongoose.connect("mongodb://localhost:27017/tune-in", {
-    //   useNewUrlParser: true,
-    //   useUnifiedTopology: true,
-    // });
-    // console.log("Connected to MongoDB");
-
     // Seed user data
     await User.deleteMany(); // Clear existing user data
     const createdUsers = await User.insertMany(users);

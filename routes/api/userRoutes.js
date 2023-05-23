@@ -1,42 +1,53 @@
 const router = require("express").Router();
-const { getAllUsers, getUserById, createUser, updateUserById } = require("../../controllers/userController");
+const {
+  getAllUsers,
+  getUserById,
+  createUser,
+  updateUserById,
+} = require("../../controllers/userController");
 
-
-router.get("/user", async (req, res) => {
+router.get("/", async (req, res) => {
+  console.log("GET /user");
   try {
-    const users = await getAllUsers()
-    res.status(200).json({ status: "success", payload: users })
-  } catch( error ){
-    res.status(500).json({ msg: error.message })
+    const users = await getAllUsers();
+    console.log("Users retrieved:", users);
+    res.status(200).json({ status: "success", payload: users });
+  } catch (err) {
+    res.status(500).send({ err });
   }
-})
+});
 
-router.get("/user/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
+  console.log(`GET /user/${req.params.id}`);
   try {
-    const user = await getUserById(req.params.id)
-    res.status(200).json({ status: "success", payload: user })
-  } catch( error ){
-    res.status(500).json({ msg: error.message })
+    const user = await getUserById(req.params.id);
+    console.log("User retrieved:", user);
+    res.status(200).json({ status: "success", payload: user });
+  } catch (err) {
+    res.status(500).send({err});
   }
-})
+});
 
-router.post("/user", async( req, res) => {
+router.post("/", async (req, res) => {
+  console.log("POST /user");
   try {
-    const newUser = await createUser(req.body)
-    res.status(200).json({ status: "success", payload: newUser })
-  } catch(error){
-    res.status(500).json({ msg: error.message })
+    const newUser = await createUser(req.body);
+    console.log("New user created:", newUser);
+    res.status(200).json({ status: "success", payload: newUser });
+  } catch (err) {
+    res.status(500).send({err});
   }
-})
+});
 
-router.put("/user/:id", async (req, res) => {
+router.put("/:id", async (req, res) => {
+  console.log(`PUT /user/${req.params.id}`);
   try {
-    const user = await updateUserById(req.params.id, req.body)
-    res.status(200).json({ status: "success", payload: user })
-  } catch( error ){
-    res.status(500).json({ msg: error.message })
+    const user = await updateUserById(req.params.id, req.body);
+    console.log("User updated:", user);
+    res.status(200).json({ status: "success", payload: user });
+  } catch (err) {
+    res.status(500).send({ err });
   }
-})
-
+});
 
 module.exports = router;
