@@ -4,7 +4,7 @@ const {
   getThoughtById,
   createThought,
   updateThoughtById,
-} = require("../../controllers/ThoughtController");
+} = require("../../controllers/thoughtController");
 const { updateUserById } = require("../../controllers/userController");
 
 // ======== User Routes ========================
