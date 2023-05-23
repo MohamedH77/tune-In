@@ -45,9 +45,7 @@ N/A
 
 - [License](#license)
 
-## License
-
-This project is licensed under the MIT license. Click [here](https://choosealicense.com/licenses/mit/) for more information.
+- This project is licensed under the MIT license. Click [here](https://choosealicense.com/licenses/mit/) for more information.
 
 ## Contributing
 
