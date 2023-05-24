@@ -109,15 +109,3 @@ router.delete("/:thoughtId/reactions/:reactionId", async (req, res) => {
 
 module.exports = router;
 
-
-
-
-
-
-
-
-
-
-
-
-module.exports = router;
