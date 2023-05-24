@@ -28,16 +28,6 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
-  console.log("POST /user");
-  try {
-    const newUser = await createUser(req.body);
-    console.log("New user created:", newUser);
-    res.status(200).json({ status: "success", payload: newUser });
-  } catch (err) {
-    res.status(500).send({err});
-  }
-});
 
 router.put("/:id", async (req, res) => {
   console.log(`PUT /user/${req.params.id}`);
@@ -47,6 +37,22 @@ router.put("/:id", async (req, res) => {
     res.status(200).json({ status: "success", payload: user });
   } catch (err) {
     res.status(500).send({ err });
+  }
+});
+
+
+router.post("/", async (req, res) => {
+  console.log("POST /user");
+  try {
+    const { email, lname, fname } = req.body;
+    if (!email || !lname || !fname) {
+      return res.status(400).send({ error: "Missing required fields" });
+    }
+    const newUser = await createUser(req.body);
+    console.log("New user added:", newUser);
+    res.status(201).json({ status: "success", payload: newUser });
+  } catch (err) {
+    res.status(500).send({err});
   }
 });
 

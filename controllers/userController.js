@@ -48,9 +48,27 @@ const updateUserById = async (id, data) => {
   }
 };
 
+
+// Delete user by ID
+const deleteUserById = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+    await Thought.deleteMany({ user: req.params.id });
+    await User.findByIdAndDelete(req.params.id);
+    res.status(200).json({ status: "success", message: "User and associated thoughts deleted" });
+  } catch (error) {
+    res.status(500).json({ error: "Error deleting user and associated thoughts" });
+  }
+};
+
+
 module.exports = {
   getAllUsers,
   getUserById,
   createUser,
   updateUserById,
+  deleteUserById,
 };

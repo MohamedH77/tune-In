@@ -27,4 +27,16 @@ module.exports = {
     },
     // Add more thought data as needed
   ],
+  friends: [
+    {
+      fname: "User 1",
+      lname: "User 1",
+      friendhipDuration: "1 year",
+    },
+    {
+      fname: "User 2",
+      lname: "User 2",
+      friendhipDuration: "3 year",
+    },
+  ],
 };
