@@ -1,10 +1,12 @@
 const router = require("express").Router();
+
 const {
   getAllThoughts,
   getThoughtById,
   createThought,
   updateThoughtById,
 } = require("../../controllers/thoughtController");
+
 const { updateUserById } = require("../../controllers/userController");
 const Thought = require("../../models/Thought");
 

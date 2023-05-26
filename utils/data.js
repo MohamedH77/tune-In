@@ -1,42 +1,57 @@
 module.exports = {
   users: [
     {
-      fname: "User 1",
-      email: "user1@example.com",
-      lname: "User 1",
+      _id: "646e707923f0de60cae36164",
+      username: "User 1",
+      email: "example@gmail.com",
+      thoughts: ["646e70834dbb043262e62f58"],
     },
+
     {
-      fname: "User 2",
-      lname: "User 2",
-      email: "user2@example.com",
+      _id: "646e70561b68e0d79a63d620",
+      username: "User 2",
+      email: "example2@gmail.com",
+      thoughts: ["646e708918d6481a40f6ba07"],
     },
     // Add more user data as needed
   ],
+
   thoughts: [
     {
-      fname: "User 1",
-      comment: "Thought 1",
-      lname: "User 1",
-      createdAt: new Date(),
+      id_: "646e70834dbb043262e62f58",
+      thoughtText: "Thought 1",
+      username: "User 1",
+      reactions: [
+        {
+          reactionBody: "Reaction 1",
+          username: "User 1",
+        },
+      ],
     },
     {
-      fname: "User 2",
-      lname: "User 2",
-      comment: "Thought 2",
-      createdAt: new Date(),
+      id_: "646e708918d6481a40f6ba07",
+      thoughtText: "Thought 2",
+      username: "User 2",
+      reactions: [
+        {
+          reactionBody: "Reaction 2",
+          username: "User 2",
+        },
+      ],
     },
     // Add more thought data as needed
   ],
+
   friends: [
     {
-      fname: "User 1",
-      lname: "User 1",
-      friendhipDuration: "1 year",
+      id_: "646e7092b3607196f23bb32d",
+      username: "User 1",
+      friend: "User 2",
     },
     {
-      fname: "User 2",
-      lname: "User 2",
-      friendhipDuration: "3 year",
+      id_: "646fd291b3d0211082043460",
+      username: "User 2",
+      friend: "User 1",
     },
   ],
 };

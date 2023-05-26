@@ -1,9 +1,11 @@
 const mongoose = require("mongoose");
 
 const friendSchema = new mongoose.Schema({
-  fname: String,
-  lname: String,
+  username: String,
   friendhipDuration: String,
+  friendSince: Date,
+  id: false,
+  // timestamps: true,
 });
 
 

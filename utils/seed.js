@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const { users, thoughts, friends } = require("./data");
-const { User, Thought, Friend } = require("../models");
+const { User, Thought, Friend, Reaction } = require("../models");
 
 const db = require("../config/connection");
 
@@ -21,6 +21,7 @@ async function seedData() {
     const createdFriends = await Friend.insertMany(friends);
     console.log(`${createdFriends.length} friends seeded`);
     // Update user data with thoughts
+    
 
     // Disconnect from MongoDB
     await mongoose.disconnect();
