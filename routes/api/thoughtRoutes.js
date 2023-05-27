@@ -9,6 +9,8 @@ const {
 
 const { updateUserById } = require("../../controllers/userController");
 const Thought = require("../../models/Thought");
+const Reaction = require("../../models");
+
 
 // ======== User Routes ========================
 
@@ -23,7 +25,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/thought/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
   console.log(`GET /thought/${req.params.id}`);
   try {
     const thought = await getThoughtById(req.params.id);
@@ -34,7 +36,7 @@ router.get("/thought/:id", async (req, res) => {
   }
 });
 
-router.post("/thought", async (req, res) => {
+router.post("/", async (req, res) => {
   console.log("POST /thought");
   try {
     const newThought = await createThought(req.body);
@@ -51,7 +53,7 @@ router.post("/thought", async (req, res) => {
   }
 });
 
-router.put("/thought/:id", async (req, res) => {
+router.put("/:id", async (req, res) => {
   console.log(`PUT /thought/${req.params.id}`);
   try {
     const updatedThought = await updateThoughtById(req.params.id, req.body);
@@ -75,7 +77,8 @@ router.post("/:thoughtId/reactions", async (req, res) => {
       return res.status(404).json({ error: "Thought not found" });
     }
 
-    thought.reactions.push(reaction);
+    const newReaction = new Reaction(reaction);
+    thought.reactions.push(newReaction);
     const updatedThought = await thought.save();
 
     res.status(201).json({ status: "success", payload: updatedThought });
@@ -97,7 +100,7 @@ router.delete("/:thoughtId/reactions/:reactionId", async (req, res) => {
     }
 
     thought.reactions = thought.reactions.filter(
-      (reaction) => reaction.reactionId !== reactionId
+      (reaction) => reaction._id.toString() !== reactionId
     );
 
     const updatedThought = await thought.save();
@@ -108,6 +111,7 @@ router.delete("/:thoughtId/reactions/:reactionId", async (req, res) => {
     res.status(500).json({ error: "Error removing reaction" });
   }
 });
+
 
 module.exports = router;
 

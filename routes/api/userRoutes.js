@@ -4,6 +4,7 @@ const {
   getUserById,
   createUser,
   updateUserById,
+  deleteUserById,
 } = require("../../controllers/userController");
 
 router.get("/", async (req, res) => {
@@ -44,8 +45,8 @@ router.put("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   console.log("POST /user");
   try {
-    const { email, lname, fname } = req.body;
-    if (!email || !lname || !fname) {
+    const { email, username } = req.body;
+    if (!email || !username) {
       return res.status(400).send({ error: "Missing required fields" });
     }
     const newUser = await createUser(req.body);
@@ -53,6 +54,17 @@ router.post("/", async (req, res) => {
     res.status(201).json({ status: "success", payload: newUser });
   } catch (err) {
     res.status(500).send({err});
+  }
+});
+
+
+router.delete("/:id", async (req, res) => {
+  console.log(`DELETE /user/${req.params.id}`);
+  try {
+    const result = await deleteUserById(req.params.id);
+    res.status(200).json({ status: "success", message: result.message });
+  } catch (err) {
+    res.status(500).send({ error: err.message });
   }
 });
 

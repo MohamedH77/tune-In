@@ -6,7 +6,6 @@ module.exports = {
       email: "example@gmail.com",
       thoughts: ["646e70834dbb043262e62f58"],
     },
-
     {
       _id: "646e70561b68e0d79a63d620",
       username: "User 2",
@@ -18,7 +17,7 @@ module.exports = {
 
   thoughts: [
     {
-      id_: "646e70834dbb043262e62f58",
+      _id: "646e70834dbb043262e62f58",
       thoughtText: "Thought 1",
       username: "User 1",
       reactions: [
@@ -29,7 +28,7 @@ module.exports = {
       ],
     },
     {
-      id_: "646e708918d6481a40f6ba07",
+      _id: "646e708918d6481a40f6ba07",
       thoughtText: "Thought 2",
       username: "User 2",
       reactions: [

@@ -1,7 +1,20 @@
 const mongoose = require("mongoose");
-const ReactionSchema = require("./Reaction");
-const { Reaction } = require(".");
 
+const reactionSchema = new mongoose.Schema({
+  reactionId: {
+    type: mongoose.Schema.Types.ObjectId,
+    default: new mongoose.Types.ObjectId(),
+  },
+  reactionBody: {
+    type: String,
+    required: true,
+    maxlength: 280,
+  },
+  username: {
+    type: String,
+    required: true,
+  },
+});
 
 const thoughtSchema = new mongoose.Schema(
   {
@@ -15,11 +28,7 @@ const thoughtSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    // reactions: {
-    //   type: String,
-    //   ref: "Reaction",
-
-    // }
+    reactions: [reactionSchema], // Array of nested documents using the reactionSchema
   },
   {
     toObject: {
@@ -36,5 +45,3 @@ const thoughtSchema = new mongoose.Schema(
 const Thought = mongoose.model("Thought", thoughtSchema);
 
 module.exports = Thought;
-
-

@@ -27,9 +27,14 @@ const getThoughtById = async (id) => {
 const createThought = async (data) => {
   console.log("Creating a new thought...");
   try {
-    const thought = await Thought.create(data);
-    console.log("New thought created:", thought);
-    return thought;
+    const { reactions, ...thoughtData } = data;
+    const thought = new Thought({
+      ...thoughtData,
+      reactions, // Pass the reactions array from the request payload
+    });
+    const newThought = await thought.save();
+    console.log("New thought created:", newThought);
+    return newThought;
   } catch (err) {
     console.error("Error creating a new thought:", err);
     throw new Error("Error creating a new thought");
@@ -39,7 +44,15 @@ const createThought = async (data) => {
 const updateThoughtById = async (id, data) => {
   console.log(`Updating thought by id: ${id}`);
   try {
-    const thought = await Thought.findByIdAndUpdate(id, data, { new: true });
+    const { reactions, ...thoughtData } = data;
+    const thought = await Thought.findByIdAndUpdate(
+      id,
+      {
+        ...thoughtData,
+        reactions, // Pass the updated reactions array from the request payload
+      },
+      { new: true }
+    );
     console.log("Thought updated:", thought);
     return thought;
   } catch (err) {
@@ -47,6 +60,7 @@ const updateThoughtById = async (id, data) => {
     throw new Error("Error updating thought by id");
   }
 };
+
 
 module.exports = {
   getAllThoughts,
