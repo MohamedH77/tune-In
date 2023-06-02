@@ -37,7 +37,7 @@ N/A
 
 ## Usage
 
-- [Walkthrough video](https://drive.google.com/file/d/1O1XvPXzRyp38e_BVG9DqXReXTeK7b2rE/view)
+- [Walkthrough video](https://drive.google.com/file/d/1YuDPxsL_iA-qTcyzxJp3woodRDkw1ccC/view)
 
 ## License
 
